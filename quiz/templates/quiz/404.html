@@ -1,0 +1,8 @@
+{% extends "quiz/layout.html" %}
+
+{% block body %}
+<h1>Oops!</h1>
+<h3>No tienes permiso para acceder a esta página, estás logueado?, probá registrarte</h3>
+
+<a class="nav-link" href="{% url 'register' %}">Register</a>
+{% endblock %}

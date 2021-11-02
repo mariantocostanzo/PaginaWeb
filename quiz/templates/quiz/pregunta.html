@@ -1,0 +1,64 @@
+{% extends "quiz/layout.html" %}
+{% load static %}
+{% load bootstrap_icons %}
+{% block body %}
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+       {% if message %}
+        <div>{{ message }}</div>
+    {% endif %}
+
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+            <div class="col-lg-10 d-flex flex-column">
+                   <h3 style="color:azure;"><span class="badge bg-secondary">vidas:</span>
+                   {% for vida in vidas %}
+                    {% bs_icon 'heart' %}
+                   {% endfor %}
+                   </h3>
+                <div class="px-lg-5 py-lg-4 p-4">
+                   <h1 class="font text-white">{{ pregunta.texto }}</h1> 
+                   <h3 style="color:azure;"><span class="badge bg-secondary">{{ categoria }}</span>
+                   <br>
+                    <ul style="list-style-type: none; padding: 0;">
+                      {% for respuesta in respuestas %}
+                      <form action="{% url 'pregunta_view' %}" method="post">
+                        {% csrf_token %}
+                        <li>
+                            <button style="color: #545b62;" class="btn-get-started animate__animated scrollto" type="submit" name="respuesta" value="{{respuesta.id}}">
+                                {{ respuesta.texto }}
+                            </button>
+                        </li>
+                      </form>
+                      {% endfor %}
+                </div>
+            </div>
+
+        </div>
+      </div>
+      
+    </div>
+
+    <svg class="hero-waves" style="height: 250px;" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+
+{% endblock %}

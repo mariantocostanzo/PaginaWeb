@@ -1,0 +1,87 @@
+{% extends "quiz/layout.html" %}
+{% load static %}
+{% load bootstrap_icons %}
+{% block body %}
+
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light">registro</h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      
+
+    </div>
+  </header><!-- End Header -->
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <div class="col-lg-5 d-flex flex-column">
+            
+
+             <div class="px-lg-7 py-lg-4 p-4">
+                <h1 class="font-weight-bold text-white">Bienvenido</h1> 
+                <br>
+                <form action="{% url 'register' %}" method="post">
+                  {% csrf_token %}
+                 <div class="mb-3">
+                   <label for="Usuario " class="form-label text-white">usuario</label>
+                   <input name="username" type="usuario" class="form-control bg-white border-0" placeholder="ingresa tu usuario"id="Usuario">
+                 </div>
+                 <div class="mb-3">
+                   <label for="exampleInputEmail1" class="form-label text-white">Correo electrónico</label>
+                   <input name="email" type="email" class="form-control bg-white border-0"placeholder="ingresa tu correo electrónico" id="exampleInputEmail1" aria-describedby="emailHelp">
+                   
+                 </div>
+                 <div class="mb-3">
+                   <label for="exampleInputPassword1" class="form-label text-white">Contraseña</label>
+                   <input name="password" type="password" class="form-control bg-white border-0" placeholder="ingresa tu contraseña" id="exampleInputPassword1">
+                 </div>
+                 <div class="mb-3">
+                   <label for="exampleInputPassword1" class="form-label text-white">Confirmar contraseña</label>
+                   <input name="confirmation" type="password" class="form-control bg-white border-0" placeholder="confirmar tu contraseña" id="exampleInputPassword1">
+                   <br>
+                 </div>
+                 
+                 
+                 <input type="submit" class="btn btn-primary w-100" value="Register">
+               </form>
+             </div>
+         </div>
+
+
+        </div>
+      </div>
+
+      
+      
+    </div>
+
+    <svg class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+{% endblock %}

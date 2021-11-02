@@ -1,0 +1,106 @@
+{% extends "quiz/layout.html" %}
+{% load static %}
+{% block body %}
+<style>
+    table{
+    background-color: white;
+    text-align: left;
+    border-collapse: collapse;
+    width: 50% !important;
+    margin: auto;
+}
+th, td{
+    padding: 20;
+
+}
+thead{
+    background-color: rgb(34, 31, 31);
+    border-bottom: solid 5px rgb(121, 99, 99);
+    color:white;
+}
+
+
+tr:hover td{
+    background-color:rgb(151, 129, 151);
+    color: white;
+
+}
+
+  </style>
+  <!-- ======= Header ======= -->
+  <header id="header" class="fixed-top d-flex align-items-center  header-transparent ">
+    <div class="container d-flex align-items-center">
+
+      <div class="logo mr-auto">
+        <h1 class="text-light">estadisticas</h1>
+        <!-- Uncomment below if you prefer to use an image logo -->
+        <!-- <a href="index.html"><img src="assets/img/logo.png" alt="" class="img-fluid"></a>-->
+      </div>
+
+      
+
+    </div>
+  </header><!-- End Header -->
+
+
+
+  <!-- ======= Hero Section ======= -->
+  <section id="hero" class="d-flex flex-column justify-content-end align-items-center">
+    <div id="heroCarousel" class="container carousel carousel-fade" data-ride="carousel">
+
+      <!-- Slide 1 -->
+      <div class="carousel-item active">
+        <div class="carousel-container">
+          <div class="table-responsive">
+            
+            <table class="table table-hover">
+                <thead>
+                  <tr>
+                    <th scope="col">usuario</th>
+                    <th scope="col">mejor puntaje</th>
+                    <th scope="col">puntaje historico</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for estadistica in estadisticas %}
+                        <tr>
+                            <td>{{ estadistica.usuario.username }}</td>
+                            <td>{{ estadistica.mejor_racha }}</td>
+                            <td>{{ estadistica.puntaje_historico }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+
+              </table>
+                                <a  href="{% url 'inicio' %}"style="color: #545b62;" class="btn-get-started animate__animated scrollto" name="respuesta" value="{{respuesta.id}}">
+                                    Volver al inicio
+                                </a>
+            
+            </div>
+          
+       </div>
+      </div>
+    </div> 
+      
+    
+
+    <svg style="height: 250px;" class="hero-waves" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 24 150 28 " preserveAspectRatio="none">
+      <defs>
+        <path id="wave-path" d="M-160 44c30 0 58-18 88-18s 58 18 88 18 58-18 88-18 58 18 88 18 v44h-352z">
+      </defs>
+      <g class="wave1">
+        <use xlink:href="#wave-path" x="50" y="3" fill="rgba(255,255,255, .1)">
+      </g>
+      <g class="wave2">
+        <use xlink:href="#wave-path" x="50" y="0" fill="rgba(255,255,255, .2)">
+      </g>
+      <g class="wave3">
+        <use xlink:href="#wave-path" x="50" y="9" fill="#fff">
+      </g>
+    </svg>
+
+  </section><!-- End Hero -->
+
+  <a href="#" class="back-to-top"><i class="ri-arrow-up-line"></i></a>
+
+{% endblock %}
